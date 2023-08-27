@@ -15,47 +15,37 @@ class CartService {
     }
   }
   
-  async addProductToCart(cartId, userId, productId) {
-  try {
-    const userCart = await CartRepository.findCartByUserId(userId);
-
-    if (!userCart) {
-      throw new Error('Carrito no encontrado');
+  async addProductToCart(cartId, userId, productId, quantity) {
+    try {
+      const userCart = await CartRepository.findCartByUserId(userId);
+  
+      if (!userCart) {
+        throw new Error('Carrito no encontrado');
+      }
+  
+      console.log("Productos en el carrito:", userCart.products);
+  
+      const existingProduct = userCart.products.find((product) => {
+        return product.productId._id.toString() === productId;
+      });
+  
+      console.log("Producto existente:", existingProduct);
+  
+      if (existingProduct) {
+        existingProduct.quantity += quantity;
+      } else {
+        userCart.products.push({ productId, quantity: quantity });
+      }
+  
+      console.log("Productos en el carrito:", userCart.products);
+      console.log("Producto existente:", existingProduct);
+  
+      await userCart.save();
+    } catch (error) {
+      throw new Error('Error al agregar producto al carrito');
     }
-
-    console.log("Productos en el carrito:", userCart.products);
-
-    const existingProduct = userCart.products.find(product => product.productId.toString() === productId);
-
-    console.log("Producto existente:", existingProduct);
-
-    if (existingProduct) {
-      throw new Error('Producto ya existe en el carrito');
-    }
-
-    userCart.products.push({ productId, quantity: 1 });
-    console.log("Productos en el carrito:", userCart.products);
-    console.log("Producto existente:", existingProduct);
-    await userCart.save();
-  } catch (error) {
-    throw new Error('Error al agregar producto al carrito');
   }
-}
 
-
-async checkIfProductExistsInCart(userId, productId) {
-  try {
-    const userCart = await CartRepository.findCartByUserId(userId);
-
-    if (!userCart) {
-      throw new Error('Carrito no encontrado');
-    }
-
-    return userCart.products.some(product => product.productId.toString() === productId);
-  } catch (error) {
-    throw new Error('Error al verificar producto en el carrito');
-  }
-}
 
 }
 

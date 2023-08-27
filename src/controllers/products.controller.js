@@ -28,10 +28,10 @@ export const editProduct = async (req, res) => {
     const productId = req.params.id;
     const { title, description, price, code, category } = req.body;
 
-    // Realiza la actualización del producto en la base de datos utilizando el productId
+    
     const updatedProduct = await productService.editProduct(productId, { title, description, price, code, category });
 
-    res.json(updatedProduct); // Devuelve los datos actualizados del producto
+    res.json(updatedProduct);
   } catch (error) {
     console.error("Error al editar el producto:", error);
     res.status(500).json({ status: "error", message: "Error al editar el producto" });

@@ -4,7 +4,7 @@ import { selectedDAO } from '../config/config.js';
 class ProductRepository {
   constructor() {
     this.dao = DAOFactory.createDAO(selectedDAO);
-    console.log(`Using DAO implementation: ${selectedDAO}`);
+    console.log(`Dao Actual: ${selectedDAO}`);
   }
 
   async addProduct(productData) {

@@ -70,21 +70,9 @@ class SessionController {
       };
   
       console.log("Usuario establecido en la sesión:", req.session.user);
-  
-      // Para obtener todos los productos
-      const products = await Product.find().lean();
-  
-      // Renderiza la vista de perfil con los datos del usuario y los productos
-      return res.render("profile", {
-        // Utiliza los datos obtenidos de la base de datos directamente
-        first_name: findUser.first_name,
-        last_name: findUser.last_name,
-        email: findUser.email,
-        age: findUser.age,
-        role: findUser.role, // Mantén esta línea para mostrar el rol en la vista
-        products,
-        cartId: req.session.cartId,
-      });
+    
+      // Redireccion a current
+      return res.redirect("current");
     } catch (error) {
       console.error("Error en el inicio de sesión:", error);
       res.status(500).json({ status: "error", message: "Error en el inicio de sesión" });
@@ -175,7 +163,7 @@ class SessionController {
             first_name: user.first_name,
             last_name: user.last_name,
             role: user.role,
-            products: products, // Pasar los productos a la vista
+            products: products,
             cartId: userCart ? userCart._id : null
           });
         } else {

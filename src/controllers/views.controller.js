@@ -8,7 +8,6 @@ class ViewController {
         const sort = req.query.sort === 'desc' ? -1 : 1;
         const query = req.query.query || '';
     
-        // Construir el objeto de filtro
         const filter = {};
         if (query) {
           filter.$or = [
@@ -16,20 +15,16 @@ class ViewController {
             { availability: { $regex: query, $options: 'i' } },
           ];
         }
-    
-        // Calcula el total de páginas y el número de documentos a saltar
         const totalProducts = await Product.countDocuments(filter).lean();
         const totalPages = Math.ceil(totalProducts / limit);
         const skip = (page - 1) * limit;
     
-        // Obtiene los productos según los parámetros de la consulta
         const products = await Product.find(filter)
           .sort({ price: sort })
           .limit(limit)
           .skip(skip)
           .lean();
     
-        // Renderiza la vista con los productos y la información de paginación
         res.render('productList', {
           products,
           totalPages,
