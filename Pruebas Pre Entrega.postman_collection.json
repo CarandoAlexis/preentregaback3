@@ -1,0 +1,397 @@
+{
+	"info": {
+		"_postman_id": "9757879b-b877-479c-9a8d-5f317d744a2f",
+		"name": "Pruebas Pre Entrega",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27711197"
+	},
+	"item": [
+		{
+			"name": "Login Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"adminCoder@coder.com\",\r\n    \"password\": \"admin\"  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/session/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"session",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cart Add Product Admin",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/cart/64eb81946ec65971229801c0/add/64ace2feda5dcf8dd1a347a3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cart",
+						"64eb81946ec65971229801c0",
+						"add",
+						"64ace2feda5dcf8dd1a347a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"producto prueba 4\",\r\n    \"description\": \"producto prueba 4\",\r\n    \"price\": 1000,\r\n    \"code\": \"P4\",\r\n    \"category\":\"producto\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Product Admin",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"producto prueba 4 editado\",\r\n    \"description\": \"producto prueba 4 editado\",\r\n    \"price\": 7000,\r\n    \"code\": \"P4\",\r\n    \"category\":\"producto editado\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products/edit/64eb83eee0fc95d161cbf1ad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"edit",
+						"64eb83eee0fc95d161cbf1ad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product Admin",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products/delete/64eb83eee0fc95d161cbf1ad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"delete",
+						"64eb83eee0fc95d161cbf1ad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout Admin",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"perez@hotmail.com\",\r\n    \"password\": \"123\"  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/session/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"session",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"producto prueba 4\",\r\n    \"description\": \"producto prueba 4\",\r\n    \"price\": 1000,\r\n    \"code\": \"P4\",\r\n    \"category\":\"producto\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cart Add Product User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/cart/64e65153d5e417d576f907da/add/64ace2feda5dcf8dd1a347a3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cart",
+						"64e65153d5e417d576f907da",
+						"add",
+						"64ace2feda5dcf8dd1a347a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cart Add Product User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/cart/64e65153d5e417d576f907da/add/64ace2feda5dcf8dd1a347a3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cart",
+						"64e65153d5e417d576f907da",
+						"add",
+						"64ace2feda5dcf8dd1a347a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cart Add Duplicate Product User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cart/64e65153d5e417d576f907da/add/64ace2feda5dcf8dd1a347a3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cart",
+						"64e65153d5e417d576f907da",
+						"add",
+						"64ace2feda5dcf8dd1a347a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cart Edit Quantity User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"quantity\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cart/64e65153d5e417d576f907da/edit/64ace2feda5dcf8dd1a347a3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cart",
+						"64e65153d5e417d576f907da",
+						"edit",
+						"64ace2feda5dcf8dd1a347a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cart Delete Product User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cart/64e65153d5e417d576f907da/remove/64ace2feda5dcf8dd1a347a3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cart",
+						"64e65153d5e417d576f907da",
+						"remove",
+						"64ace2feda5dcf8dd1a347a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cart Purchase Products User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cart/64e65153d5e417d576f907da/purchase",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cart",
+						"64e65153d5e417d576f907da",
+						"purchase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout User",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

@@ -12,14 +12,18 @@ export const getProductList = async (req, res) => {
   }
 };
 
-export const addProduct = async (req, res) => {
+export const addProduct = async (req, res, next) => {
   try {
     const { title, description, price, code, category } = req.body;
+    if (!title || !description || !price || !code || !category) {
+      const error = new Error('Los campos son inválidos o faltan.');
+      error.name = 'InvalidFieldsError';
+      throw error;
+    }
     await productService.addProduct({ title, description, price, code, category });
     res.status(201).json({ status: "success", message: "Producto agregado exitosamente" });
   } catch (error) {
-    console.error("Error al agregar el producto:", error);
-    res.status(500).json({ status: "error", message: "Error al agregar el producto" });
+    next(error);
   }
 };
 

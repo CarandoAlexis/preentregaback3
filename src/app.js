@@ -14,6 +14,7 @@ import passport from "passport";
 import initializePassport from "./config/passport-config.js";
 import { mongoUrl, sessionSecret } from "./config/config.js";
 import cartRouter from "./routes/carts.router.js";
+import errorHandler from "./middleware/errorHandler.js";
 
 console.log("Mongo URL app.js:", mongoUrl);
 
@@ -71,6 +72,8 @@ app.get("/", (req, res) => {
 app.use("/products", authMdw, (req, res, next) => {
   return res.render("productList");
 });
+
+app.use(errorHandler);
 
 // Iniciar el servidor
 const mode = process.env.NODE_ENV || "development";
