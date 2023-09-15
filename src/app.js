@@ -15,6 +15,8 @@ import initializePassport from "./config/passport-config.js";
 import { mongoUrl, sessionSecret } from "./config/config.js";
 import cartRouter from "./routes/carts.router.js";
 import errorHandler from "./middleware/errorHandler.js";
+import logger from "./config/logger.js";
+import loggerTestRouter from './routes/loggerTest.router.js'
 
 console.log("Mongo URL app.js:", mongoUrl);
 
@@ -62,6 +64,7 @@ app.use("/", viewsRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/session/", sessionRouter);
+app.use("/loggerTest", loggerTestRouter);
 
 // Redirección a la página de registro por defecto
 app.get("/", (req, res) => {
@@ -80,5 +83,6 @@ const mode = process.env.NODE_ENV || "development";
 const port = mode === "development" ? 8080 : 3000;
 app.listen(port, () => {
   displayRoutes(app);
-  console.log(`Server listening on port ${port}`);
+  //console.log(`Server listening on port ${port}`);
+  logger.info(`Server listening on port ${port}`);
 });
