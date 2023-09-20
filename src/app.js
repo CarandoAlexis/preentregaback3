@@ -17,10 +17,15 @@ import cartRouter from "./routes/carts.router.js";
 import errorHandler from "./middleware/errorHandler.js";
 import logger from "./config/logger.js";
 import loggerTestRouter from './routes/loggerTest.router.js'
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUi from "swagger-ui-express";
+import swaggerOpts from "./config/swagger.config.js";
 
 console.log("Mongo URL app.js:", mongoUrl);
 
 const app = express();
+
+const swaggerSpec = swaggerJSDoc(swaggerOpts);
 
 // Configuración de conexión a MongoDB
 mongoose.connect(mongoUrl, {
@@ -65,6 +70,7 @@ app.use("/api/cart", cartRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/session/", sessionRouter);
 app.use("/loggerTest", loggerTestRouter);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Redirección a la página de registro por defecto
 app.get("/", (req, res) => {
